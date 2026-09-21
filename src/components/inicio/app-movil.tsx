@@ -1,8 +1,12 @@
+import {
+  IconoAppStore,
+  IconoGooglePlay,
+} from "@/components/ui/iconos-sociales";
 import { ENLACES } from "@/lib/site";
 
 const TIENDAS = [
-  { href: ENLACES.googlePlay, label: "Google Play" },
-  { href: ENLACES.appStore, label: "App Store" },
+  { href: ENLACES.googlePlay, label: "Google Play", Icono: IconoGooglePlay },
+  { href: ENLACES.appStore, label: "App Store", Icono: IconoAppStore },
 ];
 
 export function AppMovil() {
@@ -19,14 +23,15 @@ export function AppMovil() {
           </p>
         </div>
         <div className="flex flex-wrap gap-3.5">
-          {TIENDAS.map(({ href, label }) => (
+          {TIENDAS.map(({ href, label, Icono }) => (
             <a
               key={href}
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-pill border border-linea bg-card2 px-[26px] py-[15px] text-[14px] font-medium text-texto transition-colors hover:border-azul hover:text-azul"
+              className="inline-flex items-center gap-2.5 rounded-pill border border-linea bg-card2 px-[26px] py-[15px] text-[14px] font-medium text-texto transition-colors hover:border-azul hover:text-azul"
             >
+              <Icono size={18} />
               {label} ↗
             </a>
           ))}
