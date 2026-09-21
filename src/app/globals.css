@@ -1,0 +1,251 @@
+@import "tailwindcss";
+
+@custom-variant claro (:where(:root[data-tema="claro"]) &);
+
+:root {
+  --bg: #060e1c;
+  --bg2: #0a1526;
+  --card: #0e1b30;
+  --card2: #122340;
+  --linea: #1c2b45;
+  --texto: #ffffff;
+  --texto2: #94a6c2;
+  --texto3: #637693;
+  --azul: #2f7df6;
+  --azul2: #5b9cff;
+  --rojo: #ef4256;
+  --sombra: 0 18px 44px rgba(0, 0, 0, 0.38);
+}
+
+:root[data-tema="claro"] {
+  --bg: #ffffff;
+  --bg2: #f4f7fb;
+  --card: #ffffff;
+  --card2: #f4f7fb;
+  --linea: #e3eaf3;
+  --texto: #0b1628;
+  --texto2: #5b6c86;
+  --texto3: #8494ab;
+  --azul: #1c63d8;
+  --azul2: #2f7df6;
+  --rojo: #de2e43;
+  --sombra: 0 14px 40px rgba(18, 40, 80, 0.1);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg2: var(--bg2);
+  --color-card: var(--card);
+  --color-card2: var(--card2);
+  --color-linea: var(--linea);
+  --color-texto: var(--texto);
+  --color-texto2: var(--texto2);
+  --color-texto3: var(--texto3);
+  --color-azul: var(--azul);
+  --color-azul2: var(--azul2);
+  --color-rojo: var(--rojo);
+
+  --font-sans: var(--font-poppins), Helvetica, sans-serif;
+
+  --breakpoint-nav: 900px;
+
+  --radius-pill: 999px;
+  --radius-textarea: 24px;
+  --radius-card: 28px;
+  --radius-locutor: 30px;
+  --radius-big: 32px;
+  --radius-voz: 24px;
+  --radius-cabina: 36px;
+  --radius-post: 26px;
+
+  --shadow-lmc: var(--sombra);
+  --shadow-azul: 0 10px 26px rgba(47, 125, 246, 0.32);
+  --shadow-rojo: 0 10px 26px rgba(239, 66, 86, 0.28);
+}
+
+@layer base {
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+  }
+
+  body {
+    color: var(--texto);
+    overflow-x: hidden;
+  }
+
+  a {
+    color: var(--azul);
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: var(--azul2);
+  }
+
+  ::selection {
+    background: var(--azul);
+    color: #fff;
+  }
+
+  input[type="range"] {
+    accent-color: var(--azul);
+  }
+}
+
+@keyframes lmcBar {
+  0%,
+  100% {
+    transform: scaleY(0.2);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+@keyframes lmcTicker {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes lmcBlink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+@keyframes lmcRise {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes lmcFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes lmcZoom {
+  from {
+    opacity: 0;
+    transform: scale(1.06);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes lmcHalo {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.55;
+  }
+  100% {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+}
+
+@utility lmc-blink {
+  animation: lmcBlink 1.4s infinite;
+}
+@utility lmc-fade {
+  animation: lmcFade 0.4s ease both;
+}
+@utility lmc-rise {
+  animation: lmcRise 0.55s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+@utility lmc-rise-hero {
+  animation: lmcRise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+@utility lmc-zoom {
+  animation: lmcZoom 1s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+@utility lmc-ticker {
+  animation: lmcTicker 44s linear infinite;
+}
+@utility lmc-halo {
+  animation: lmcHalo 2.2s ease-out infinite;
+}
+
+@utility lmc-contenedor {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+@utility lmc-input {
+  width: 100%;
+  background: var(--card2);
+  border: 1px solid var(--linea);
+  border-radius: 999px;
+  color: var(--texto);
+  padding: 15px 22px;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+@utility lmc-textarea {
+  width: 100%;
+  background: var(--card2);
+  border: 1px solid var(--linea);
+  border-radius: 24px;
+  color: var(--texto);
+  padding: 16px 22px;
+  font-size: 15px;
+  outline: none;
+  resize: vertical;
+  transition: border-color 0.2s;
+}
+
+@utility lmc-etiqueta {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--texto3);
+  margin-bottom: 8px;
+}
+
+.lmc-voz-card {
+  border: 0.5px solid var(--linea);
+  transition: border-color 0.35s ease;
+}
+.lmc-voz-card:hover {
+  border-color: var(--azul2);
+}
+.lmc-voz-card:hover .lmc-voz-foto img {
+  transform: scale(1.08);
+}
+
+.lmc-sin-scrollbar {
+  scrollbar-width: none;
+}
+.lmc-sin-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
